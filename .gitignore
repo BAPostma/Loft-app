@@ -1,0 +1,10 @@
+node_modules/
+amplify/
+dist/
+
+**/.parcel-cache/
+
+**/*.DS_Store
+
+# Local dev files
+localStorage-*.json

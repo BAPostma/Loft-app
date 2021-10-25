@@ -1,0 +1,24 @@
+{
+  "name": "loft-app",
+  "version": "1.0.0",
+  "description": "Mobile-friendly app for getting insights into your Loft email",
+  "scripts": {
+    "start": "parcel ./src/index.html --https",
+    "build": "parcel build ./src/index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Barry Postma",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.38.0",
+    "@aws-sdk/client-s3": "^3.6.1",
+    "@aws-sdk/client-ses": "^3.38.0",
+    "@aws-sdk/client-sqs": "^3.38.0",
+    "@aws-sdk/credential-providers": "^3.38.0",
+    "@aws-sdk/lib-dynamodb": "^3.38.0",
+    "aws-amplify": "^4.3.3"
+  },
+  "devDependencies": {
+    "parcel": "^2.0.0"
+  }
+}
