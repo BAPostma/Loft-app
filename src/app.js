@@ -7,12 +7,19 @@ import { Stats } from './services/Stats';
 
 import App from './components/App.svelte';
 
+const target = document.getElementById("app");
 const app = new App({
-  target: document.body,
-  props: {
-    name: 'Loft',
-  },
+    target: target,
+    props: {
+        name: 'Loft',
+    },
 });
+
+if (module.hot) {
+    // Bypass default Svelte behaviour of appending, breaking hot reload.
+    // https://github.com/orlov-vo/parcel-transformer-svelte/issues/10#issuecomment-764620003
+    module.hot.dispose(() => app.$destroy());
+}
 
 export default app;
 
