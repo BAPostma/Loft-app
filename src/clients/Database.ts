@@ -2,7 +2,7 @@ import { ICredentials } from "@aws-amplify/core";
 import { DescribeTableCommand, DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import { DynamoDBDocumentClient, ScanCommand } from "@aws-sdk/lib-dynamodb";
 
-export default class Database {
+export class Database {
     private dynamoDbClient: DynamoDBClient;
     private documentClient: DynamoDBDocumentClient;
     readonly tableName: string;
