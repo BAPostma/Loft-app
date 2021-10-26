@@ -3,6 +3,7 @@ amplify/
 dist/
 
 **/.parcel-cache/
+**/.cache/
 
 **/*.DS_Store
 

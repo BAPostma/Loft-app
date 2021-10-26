@@ -5,6 +5,17 @@ import { Database } from './clients/Database';
 import { Queueing } from './clients/Queueing';
 import { Stats } from './services/Stats';
 
+import App from './components/App.svelte';
+
+const app = new App({
+  target: document.body,
+  props: {
+    name: 'Loft',
+  },
+});
+
+export default app;
+
 (async () => {
     aws.ConfigureSDK();
     
