@@ -16,7 +16,8 @@
     "@aws-sdk/client-sqs": "^3.38.0",
     "@aws-sdk/credential-providers": "^3.38.0",
     "@aws-sdk/lib-dynamodb": "^3.38.0",
-    "aws-amplify": "^4.3.3"
+    "aws-amplify": "^4.3.3",
+    "svelte-routing": "^1.6.0"
   },
   "devDependencies": {
     "parcel": "^2.0.0",
