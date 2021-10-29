@@ -20,22 +20,24 @@ export class Authentication {
     
             if (await this.isSignedIn()) {
                 console.log("User already signed in");
-                return;
+                return true;
             }
     
             const signInResult = await Auth.signIn({ username: username, password: password });
     
             if (signInResult.challengeName === "NEW_PASSWORD_REQUIRED") {
+                console.log("Password update required, updating...");
                 await Auth.completeNewPassword(signInResult, password);
             }
             
             // const poolUser = await Auth.currentUserPoolUser(); // contains .signInUserSession (Auth.currentSession())
-            // const userInfo = await Auth.currentUserInfo(); // keep for .username
             // console.log(poolUser);
-            // console.log(userInfo);
-    
+            const userInfo = await Auth.currentUserInfo();
+            console.log(`User ${userInfo.username} signed in to AWS`);
+            return true;
         } catch (err) {
             console.error("Failed to sign in to AWS: ", err);
+            return err.message;
         }
     }
 
