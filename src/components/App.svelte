@@ -1,24 +1,26 @@
 <script>
     import { Router, Link, Route } from "svelte-routing";
+    import Navigation from "./Navigation.svelte";
     import Settings from "./Settings.svelte";
+    import Login from "./Login.svelte";
     
-    export let name = "world";
-
     const settings = () => {
         console.log("settings!");
     }
 </script>
 
-<h1>Hello {name}</h1>
-
 <Router>
-    <nav>
-        <Link to="/">Dashboard</Link>
-        <Link to="settings">Settings</Link>
-    </nav>
+    <Navigation />
     
     <div id="pane">
-        <Route path="settings" component={Settings} />
+        <Route path="/login" component={Login} />
+        <Route path="/settings" component={Settings} />
         <Route path="/">no content</Route>
     </div>
 </Router>
+
+<style>
+    div#pane {
+        padding: 0.3rem;
+    }
+</style>
