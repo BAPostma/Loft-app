@@ -5,6 +5,12 @@ export class Authentication {
         return await Auth.currentUserCredentials();
     }
 
+    static async userInformation() {
+        // const poolUser = await Auth.currentUserPoolUser(); // contains .signInUserSession (Auth.currentSession())
+        const userInfo = await Auth.currentUserInfo();
+        return userInfo;
+    }
+
     static async isSignedIn() {
         try {
             await Auth.currentAuthenticatedUser();
@@ -30,8 +36,6 @@ export class Authentication {
                 await Auth.completeNewPassword(signInResult, password);
             }
             
-            // const poolUser = await Auth.currentUserPoolUser(); // contains .signInUserSession (Auth.currentSession())
-            // console.log(poolUser);
             const userInfo = await Auth.currentUserInfo();
             console.log(`User ${userInfo.username} signed in to AWS`);
             return true;

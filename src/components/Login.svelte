@@ -1,5 +1,8 @@
 <script>
+    import { createEventDispatcher } from 'svelte';
     import { Authentication } from "../clients/Authentication";
+
+	const dispatch = createEventDispatcher();
 
     let username = "";
     let password = "";
@@ -14,6 +17,7 @@
             error = result;
         } else {
             error = ""
+            dispatch("signIn");
         }
     }
 </script>

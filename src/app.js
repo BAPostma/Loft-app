@@ -5,6 +5,8 @@ import { Database } from './clients/Database';
 import { Queueing } from './clients/Queueing';
 import { Stats } from './services/Stats';
 
+aws.ConfigureSDK();
+
 import App from './components/App.svelte';
 
 const target = document.getElementById("app");
@@ -23,23 +25,21 @@ if (module.hot) {
 
 export default app;
 
-(async () => {
-    aws.ConfigureSDK();
-    
-    await Authentication.signIn("", "");
-    const credentials = await Authentication.AwsCredentials();
+// (async () => {    
+//     await Authentication.signIn("", "");
+//     const credentials = await Authentication.AwsCredentials();
 
-    const settings = BrowserStorage.getSettings();
+//     const settings = BrowserStorage.getSettings();
 
-    let db = new Database(credentials, settings.tableName);
-    let queue = new Queueing(credentials, `${settings.queuePrefix}${settings.instanceName}`);
+//     let db = new Database(credentials, settings.tableName);
+//     let queue = new Queueing(credentials, `${settings.queuePrefix}${settings.instanceName}`);
 
-    let stats = new Stats(db, queue);
-    let totalEmail = await stats.emailsReceived();
-    console.log(totalEmail);
+//     let stats = new Stats(db, queue);
+//     let totalEmail = await stats.emailsReceived();
+//     console.log(totalEmail);
     
-    let qDepths = await stats.queueDepths();
-    console.log(qDepths);
+//     let qDepths = await stats.queueDepths();
+//     console.log(qDepths);
     
-    await Authentication.signOut();
-})();
+//     await Authentication.signOut();
+// })();
