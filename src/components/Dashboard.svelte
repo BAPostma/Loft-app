@@ -1,9 +1,28 @@
 <script>
     import QueueDepth from "./metrics/QueueDepth.svelte";
+    import DatabaseInformation from "./metrics/DatabaseInformation.svelte";
 </script>
 
-<fieldset>
-    <legend>Queue status</legend>
-    <QueueDepth queueType="inbox" />
-    <QueueDepth queueType="dlq" />
-</fieldset>
+<div class="statistics">
+    <fieldset class="queues">
+        <legend>Queue status</legend>
+        <QueueDepth queueType="inbox" />
+        <QueueDepth queueType="dlq" />
+    </fieldset>
+
+    <fieldset class="database">
+        <legend>Email</legend>
+        <DatabaseInformation />
+    </fieldset>
+</div>
+
+<style>
+    div.statistics {
+        display: flex;
+        flex-direction: row;
+    }
+
+    fieldset {
+        flex-grow: 1;
+    }
+</style>
