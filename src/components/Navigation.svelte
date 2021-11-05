@@ -16,11 +16,11 @@
         <ul class="pure-menu-list">
             {#if isSignedIn === true}
             <li class="pure-menu-item"><Link class="pure-menu-link" to="/">Dashboard</Link></li>
-            <li class="pure-menu-item"><Link class="pure-menu-link" to="/settings">Settings</Link></li>
             <li class="pure-menu-item"><Link class="pure-menu-link" to="/logout">Logout</Link></li>
             {:else}
             <li class="pure-menu-item"><Link class="pure-menu-link" to="/login">Login</Link></li>
             {/if}
+            <li class="pure-menu-item"><Link class="pure-menu-link" to="/settings">Settings</Link></li>
         </ul>
     </div>
 </nav>
