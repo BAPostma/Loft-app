@@ -17,6 +17,7 @@
     "@aws-sdk/credential-providers": "^3.38.0",
     "@aws-sdk/lib-dynamodb": "^3.38.0",
     "aws-amplify": "^4.3.3",
+    "gridjs": "^5.0.2",
     "svelte-routing": "^1.6.0"
   },
   "devDependencies": {

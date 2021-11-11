@@ -1,6 +1,7 @@
 <script>
     import QueueDepth from "./metrics/QueueDepth.svelte";
     import DatabaseInformation from "./metrics/DatabaseInformation.svelte";
+    import Messages from "./Messages.svelte";
 </script>
 
 <div class="statistics">
@@ -15,6 +16,8 @@
         <DatabaseInformation />
     </fieldset>
 </div>
+
+<Messages />
 
 <style>
     div.statistics {
