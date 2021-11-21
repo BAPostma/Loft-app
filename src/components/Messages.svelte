@@ -1,6 +1,7 @@
 <script>
     import { onMount } from "svelte";
-    import { Grid } from "gridjs";
+    import { navigate } from "svelte-routing";
+    import { Grid, h, Row } from "gridjs";
     import "gridjs/dist/theme/mermaid.css";
     import { Authentication } from "../clients/Authentication";
     import { BrowserStorage } from "../clients/BrowserStorage";
@@ -20,6 +21,10 @@
                 selector: (cell, rowIndex, cellIndex) => cellIndex === 3 ? new Date(cell).toISOString() : cell
             },
             columns: [
+                {
+                    id: "id",
+                    hidden: true
+                },
                 {
                     id: "sourceName",
                     name: "From"
@@ -48,6 +53,16 @@
                             return 0;
                         }
                     }
+                },
+                {
+                    id: "actions",
+                    name: "Actions",
+                    formatter: (cell, row, column) => {
+                        return [
+                            h("button", { onClick: () => navigate(`/message/${row.cells[0].data}`) }, "Details"),
+                            h("button", { onClick: () => navigate(`/download/${row.cells[0].data}`) }, "Download"),
+                        ];
+                    }
                 }
             ],
             data: async () => await loadMessages()
@@ -60,7 +75,6 @@
             const settings = BrowserStorage.getSettings();
             const database = new Database(creds, settings.tableName, settings.region);
             items = await database.tableItems();
-            console.log(items);
             return items;
         } catch(err) {
             error = `Failed to load messages from ${settings.tableName}.`;
