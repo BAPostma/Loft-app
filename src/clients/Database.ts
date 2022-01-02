@@ -1,6 +1,7 @@
 import { ICredentials } from "@aws-amplify/core";
 import { DescribeTableCommand, DynamoDBClient } from "@aws-sdk/client-dynamodb";
-import { DynamoDBDocumentClient, ScanCommand } from "@aws-sdk/lib-dynamodb";
+import { DynamoDBDocumentClient, ScanCommand, QueryCommand } from "@aws-sdk/lib-dynamodb";
+import { Message } from "../models/Message";
 
 export class Database {
     private dynamoDbClient: DynamoDBClient;
@@ -48,5 +49,21 @@ export class Database {
         });
         const result = await this.documentClient.send(command);
         return result.Items;
+    }
+
+    public async get(id: string): Promise<Message> {
+        const command = new QueryCommand({
+            TableName: this.tableName,
+            //IndexName: "id",
+            KeyConditionExpression: "#id = :id",
+            ExpressionAttributeNames: {
+                "#id": "id"
+            },
+            ExpressionAttributeValues: {
+                ":id": id
+            },
+        });
+        const result = await this.documentClient.send(command);
+        return result.Items[0] as Message;
     }
 }

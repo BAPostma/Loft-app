@@ -5,6 +5,7 @@
     import Settings from "./Settings.svelte";
     import Login from "./Login.svelte";
     import Logout from "./Logout.svelte";
+    import MessageDetails from "./message/MessageDetails.svelte";
 
     let signedIn = false;
     const onSignin = (e) => {
@@ -25,11 +26,12 @@
         <Route path="/logout"><Logout on:signOut={onSignOut} /></Route>
         <Route path="/settings" component={Settings} />
         <Route path="/"><Dashboard /></Route>
+        <Route path="/message/:id" component={MessageDetails} />
     </div>
 </Router>
 
 <style>
     div#pane {
-        padding: 0.3rem;
+        width: 100vw;
     }
 </style>
