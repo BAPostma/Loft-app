@@ -17,7 +17,7 @@
             messageCount = info.ItemCount;
             tableSize = info.TableSizeBytes;
         } catch(err) {
-            error = `Failed to load table information for ${settings.tableName}.`;
+            error = `Failed to load table information.`;
         }
     });
 </script>
