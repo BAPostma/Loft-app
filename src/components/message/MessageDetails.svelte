@@ -61,36 +61,4 @@
         content: " / ";
         color: black;
     }
-
-    div.properties {
-        margin-top: 1rem;
-    }
-
-    div.property {
-        display: flex;
-        flex-direction: column;
-        min-height: 3.6rem;
-        
-        padding: 0.3rem;
-        word-break: break-word;
-
-        border-bottom-style: solid;
-        border-width: 2px;
-        border-color: azure;
-    }
-
-    div.property:first-child {
-        border-top-style: solid;
-    }
-
-    div.property strong {
-        font-size: x-small;
-        display: block;
-        padding-top: 0.3rem;
-        padding-bottom: 0.3rem;
-    }
-
-    div.property div {
-        display: block;
-    }
 </style>
