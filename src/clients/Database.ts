@@ -45,7 +45,7 @@ export class Database {
 
         const command = new ScanCommand({
             TableName: this.tableName,
-            ProjectionExpression: projection.join(','),
+            ProjectionExpression: projection.join(),
             ExpressionAttributeNames: Object.keys(attributeNames).length !== 0 ? attributeNames : undefined // some are reserved keywords
         });
         const result = await this.documentClient.send(command);

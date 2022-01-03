@@ -16,7 +16,8 @@
             const creds = await Authentication.AwsCredentials();
             const settings = BrowserStorage.getSettings();
             const database = new Database(creds, settings.tableName, settings.region);
-            mailboxes = await database.distinctTableItemValues("destination", false);
+            const items = await database.distinctTableItemValues("destination", false);
+            mailboxes = items.sort();
         } catch(err) {
             error = `Failed to load mailboxes.`;
         }
