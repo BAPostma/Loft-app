@@ -9,7 +9,7 @@
     let error;
     let filter = "";
     
-    $: displayedMailboxes = _.filter(mailboxes, (name) => _.includes(name, filter));
+    $: displayedMailboxes = _.filter(mailboxes, (name) => _.includes(name, filter.toLowerCase()));
 
     onMount(async () => {
         try {
