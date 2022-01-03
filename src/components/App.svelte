@@ -6,6 +6,7 @@
     import Login from "./Login.svelte";
     import Logout from "./Logout.svelte";
     import MessageDetails from "./message/MessageDetails.svelte";
+    import Mailboxes from "./Mailboxes.svelte";
 
     let signedIn = false;
     const onSignin = (e) => {
@@ -26,6 +27,7 @@
         <Route path="/logout"><Logout on:signOut={onSignOut} /></Route>
         <Route path="/settings" component={Settings} />
         <Route path="/"><Dashboard /></Route>
+        <Route path="/mailboxes"><Mailboxes /></Route>
         <Route path="/message/:id" component={MessageDetails} />
     </div>
 </Router>
