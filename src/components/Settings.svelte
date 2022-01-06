@@ -1,5 +1,6 @@
 <script>
     import { BrowserStorage } from "../clients/BrowserStorage";
+    import * as aws from "../Cloud";
 
     const settings = BrowserStorage.getSettings();
     let simpleSetup = {
@@ -20,6 +21,7 @@
     const saveEventHandler = (e) => {
         e.preventDefault();
         BrowserStorage.saveSettings(settings);
+        aws.ConfigureSDK();
     }
     </script>
 
