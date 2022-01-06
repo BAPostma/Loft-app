@@ -20,3 +20,8 @@ To start the local server with hot-reload, run the following command and go to [
 ```shell
 $ npm start
 ```
+
+
+## Credits
+- Pigeon icon by [Carlin MacKenzie](https://openmoji.org/library/#author=Carlin%20MacKenzie) on [OpenMoji](https://openmoji.org/library/#emoji=E009).
+- Styles by [Pure.css](https://purecss.io/).

@@ -1,0 +1,38 @@
+{
+    "name": "Loft app",
+    "short_name": "Loft",
+    "description": "App for viewing mailbox aliases, messages and statistics of your Loft mail handler.",
+    "icons": [
+        {
+            "src": "images/full_icon_x192.png",
+            "type": "image/png",
+            "sizes": "192x192",
+            "purpose": "any"
+        },
+        {
+            "src": "images/full_icon_x512.png",
+            "type": "image/png",
+            "sizes": "512x512",
+            "purpose": "any"
+        },
+        {
+            "src": "images/maskable_icon_x192.png",
+            "type": "image/png",
+            "sizes": "192x192",
+            "purpose": "maskable"
+        },
+        {
+            "src": "images/maskable_icon_x512.png",
+            "type": "image/png",
+            "sizes": "512x512",
+            "purpose": "maskable"
+        }
+    ],
+    "id": "/",
+    "scope": "/",
+    "start_url": "/",
+    "background_color": "azure",
+    "theme_color": "darkblue",
+    "display_override": [ "standalone" ],
+    "display": "minimal-ui"
+}
