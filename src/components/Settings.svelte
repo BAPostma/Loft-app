@@ -1,11 +1,14 @@
 <script>
     import { BrowserStorage } from "../clients/BrowserStorage";
+    import { ConfigQR } from "../services/ConfigQR";
     import * as aws from "../Cloud";
 
     const settings = BrowserStorage.getSettings();
     let simpleSetup = {
         active: true,
-        domain: settings.instanceName ? settings.instanceName.replace("_", ".") : ""
+        sharing: false,
+        domain: settings.instanceName ? settings.instanceName.replace("_", ".") : "",
+        qrCodeDataUri: ""
     }
 
     $: {
@@ -17,6 +20,11 @@
     const toggleAdvanced = () => {
         simpleSetup.active = !simpleSetup.active;
     }
+    
+    const toggleSharing = async () => {
+        simpleSetup.sharing = !simpleSetup.sharing;
+        simpleSetup.qrCodeDataUri = await ConfigQR.generateCode(settings);
+    }
 
     const saveEventHandler = (e) => {
         e.preventDefault();
@@ -25,7 +33,7 @@
     }
     </script>
 
-{#if simpleSetup.active}
+{#if simpleSetup.active === true && simpleSetup.sharing === false}
 <form class="pure-form pure-form-stacked">
     <fieldset id="simple">
         <legend>Basic setup</legend>
@@ -51,9 +59,10 @@
     
         <button type="submit" class="pure-button pure-button-primary" on:click={saveEventHandler}>Save</button>
         <button type="button" class="pure-button button-small" on:click={toggleAdvanced}>Advanced</button>
+        <button type="button" class="pure-button button-small" on:click={toggleSharing}>Share...</button>
     </fieldset>
 </form>
-{:else}
+{:else if simpleSetup.active === false && simpleSetup.sharing === false}
 <form class="pure-form pure-form-aligned">
     <fieldset id="advanced">
         <legend>Advanced settings</legend>
@@ -94,8 +103,17 @@
         </div>
         <button type="submit" class="pure-button pure-button-primary" on:click={saveEventHandler}>Save</button>
         <button type="button" class="pure-button button-small" on:click={toggleAdvanced}>Simple</button>
+        <button type="button" class="pure-button button-small" on:click={toggleSharing}>Share...</button>
     </fieldset>
 </form>
+{:else if simpleSetup.sharing}
+<div class="sharing">
+    <img id="qr-code" src={simpleSetup.qrCodeDataUri} alt="QR code for sharing settings" />
+    <p>
+        Scan the QR code to easily transfer settings between your devices.<br />
+        <small>You are required to login on each individual device.</small>
+    </p>
+</div>
 {/if}
 
 <style>
@@ -115,5 +133,15 @@
 
     button.button-small {
         font-size: 75%;
+    }
+
+    div.sharing p {
+        display: block;
+        text-align: center;
+    }
+
+    div.sharing img#qr-code {
+        display: block;
+        margin: 0.5em auto;
     }
 </style>
