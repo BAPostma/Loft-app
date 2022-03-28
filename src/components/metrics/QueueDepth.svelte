@@ -13,7 +13,7 @@
             const creds = await Authentication.AwsCredentials();
             const settings = BrowserStorage.getSettings();
             const queueing = new Queueing(creds, settings.queuePrefix, settings.region);
-            queueDepth = await queueing.queueDepth(LoftQueueType.Inbox);
+            queueDepth = await queueing.queueDepth(queueType);
         } catch(err) {
             error = `Failed to load queue depth for ${queueType}.`;
         }
