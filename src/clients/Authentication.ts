@@ -46,7 +46,11 @@ export class Authentication {
     }
 
     static async signOut() {
-        await Auth.signOut({ global: true });
-        console.log("Singed out of AWS");
+        try {
+            await Auth.signOut({ global: true });
+            console.log("Singed out of AWS");
+        } catch(err) {
+            console.error(err);
+        }
     }
 }

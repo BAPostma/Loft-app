@@ -47,7 +47,7 @@ export const Config = {
         // storage: new MyStorage(),
 
         // OPTIONAL - Manually set the authentication flow type. Default is 'USER_SRP_AUTH'
-        // authenticationFlowType: 'USER_PASSWORD_AUTH',
+        authenticationFlowType: 'USER_SRP_AUTH',
 
         // OPTIONAL - Manually set key value pairs that can be passed to Cognito Lambda Triggers
         // clientMetadata: { myCustomKey: 'myCustomValue' },

@@ -3,8 +3,11 @@
         "@parcel/config-default"
     ],
     "transformers": {
+        "*.{ts,tsx}": [
+            "@parcel/transformer-typescript-tsc"
+        ],
         "*.svelte": [
-            "parcel-transformer-svelte"
+            "parcel-transformer-svelte3-plus"
         ]
     }
 }
