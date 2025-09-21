@@ -8,7 +8,7 @@ See the [Loft](https://github.com/BAPostma/Loft) repository for more detail, or 
 # Contributing
 We'd love contributions that help to extend the Loft App web interface or Loft itself.
 
-The project source includes frontend code and supporting resources under `src/`. It's written in Typescript with [Svelte](https://svelte.dev/), [Pure CSS](https://purecss.io/) and uses [Parcel](https://parceljs.org) as the build tool.
+The project source includes frontend code and supporting resources under `src/`. It's written in TypeScript with [Svelte](https://svelte.dev/), [Pure CSS](https://purecss.io/) and uses [Vite](https://vitejs.dev/) as the build tool.
 
 ## Getting started
 Open the repo in your favourite editor, some basic config is already committed for VS Code. Run the following command to initialise dependencies.
@@ -16,9 +16,9 @@ Open the repo in your favourite editor, some basic config is already committed f
 $ npm install
 ```
 
-To start the local server with hot-reload, run the following command and go to [localhost:1234](https://localhost:1234). Make sure to configure the app with your AWS settings on the corresponding page.
+To start the local server with hot-reload, run the following command and go to [localhost:5173](https://localhost:5173). Make sure to configure the app with your AWS settings on the corresponding page before logging in.
 ```shell
-$ npm start
+$ npm run dev
 ```
 
 

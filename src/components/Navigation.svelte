@@ -3,6 +3,10 @@
     import { Link } from "svelte-routing";
     import { Authentication } from "../clients/Authentication";
 
+    /**
+     * @typedef {Object} Props
+     * @property {boolean} [isSignedIn]
+     */
     export let isSignedIn = false;
 
     onMount(async () => {

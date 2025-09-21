@@ -77,8 +77,8 @@
             items = await database.tableItems();
             return items;
         } catch(err) {
-            error = `Failed to load messages from ${settings.tableName}.`;
-            return error;
+            console.error(`Failed to load messages from ${settings.tableName}: ${err}`);
+            return []; // grid expects an array; return empty on failure
         }
     }
 </script>

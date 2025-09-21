@@ -1,21 +1,25 @@
-import { Auth } from "aws-amplify";
+import { signIn, signOut, getCurrentUser, fetchAuthSession, confirmSignIn } from "aws-amplify/auth";
 
 export class Authentication {
     static async AwsCredentials() {
-        return await Auth.currentUserCredentials();
+        const { credentials } = await fetchAuthSession();
+        return credentials;
     }
 
     static async userInformation() {
-        // const poolUser = await Auth.currentUserPoolUser(); // contains .signInUserSession (Auth.currentSession())
-        const userInfo = await Auth.currentUserInfo();
-        return userInfo;
+        try {
+            const user = await getCurrentUser();
+            return { username: user.username, userId: user.userId, signInDetails: user.signInDetails };
+        } catch {
+            return null;
+        }
     }
 
     static async isSignedIn() {
         try {
-            await Auth.currentAuthenticatedUser();
+            await getCurrentUser();
             return true;
-        } catch (err) {
+        } catch {
             return false;
         }
     }
@@ -28,27 +32,25 @@ export class Authentication {
                 console.log("User already signed in");
                 return true;
             }
-    
-            const signInResult = await Auth.signIn({ username: username, password: password });
-    
-            if (signInResult.challengeName === "NEW_PASSWORD_REQUIRED") {
+            const result = await signIn({ username, password });
+            if (result.nextStep?.signInStep === 'CONFIRM_SIGN_IN_WITH_NEW_PASSWORD_REQUIRED') {
                 console.log("Password update required, updating...");
-                await Auth.completeNewPassword(signInResult, password);
+                await confirmSignIn({ challengeResponse: password });
             }
             
-            const userInfo = await Auth.currentUserInfo();
-            console.log(`User ${userInfo.username} signed in to AWS`);
+            const user = await getCurrentUser();
+            console.log(`User ${user.username} signed in to AWS`);
             return true;
-        } catch (err) {
+        } catch (err:any) {
             console.error("Failed to sign in to AWS: ", err);
-            return err.message;
+            return err?.message || 'Sign-in failed';
         }
     }
 
     static async signOut() {
         try {
-            await Auth.signOut({ global: true });
-            console.log("Singed out of AWS");
+            await signOut();
+            console.log("Signed out of AWS");
         } catch(err) {
             console.error(err);
         }

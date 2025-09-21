@@ -1,10 +1,12 @@
 {
   "name": "loft-app",
+  "type": "module",
   "version": "1.0.0",
   "description": "Mobile-friendly app for getting insights into your Loft email",
   "scripts": {
-    "start": "parcel serve ./src/index.html --https",
-    "build": "parcel build ./src/index.html",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Barry Postma",
@@ -16,24 +18,20 @@
     "@aws-sdk/client-sqs": "^3.831.0",
     "@aws-sdk/credential-providers": "^3.834.0",
     "@aws-sdk/lib-dynamodb": "^3.830.0",
-    "aws-amplify": "^4.3.46",
-    "gridjs": "^5.1.0",
+    "aws-amplify": "^6.15.1",
+    "gridjs": "^6.2.0",
     "lodash": "^4.17.21",
     "qrcode": "^1.5.4",
-    "svelte-routing": "^1.11.0"
+    "svelte-routing": "^1.10.0"
   },
   "devDependencies": {
-    "@parcel/packager-raw-url": "^2.15.4",
-    "@parcel/service-worker": "^2.15.4",
-    "@parcel/transformer-sass": "^2.15.4",
-    "@parcel/transformer-typescript-tsc": "^2.15.4",
-    "@parcel/transformer-webmanifest": "^2.15.4",
+    "@sveltejs/vite-plugin-svelte": "^3.0.0",
     "@types/lodash": "^4.17.18",
-    "buffer": "^6.0.3",
-    "parcel": "^2.15.4",
-    "parcel-transformer-svelte3-plus": "^0.2.10",
-    "process": "^0.11.10",
-    "svelte": "^3.59.2",
-    "typescript": "^4.9.5"
+    "sass": "^1.93.0",
+    "svelte": "^4.2.20",
+    "svelte-preprocess": "^5.1.4",
+    "typescript": "^5.8.3",
+    "vite": "^5.4.0",
+    "@vitejs/plugin-basic-ssl": "^1.0.2"
   }
 }

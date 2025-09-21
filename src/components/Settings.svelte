@@ -7,7 +7,7 @@
     let simpleSetup = {
         active: true,
         domain: settings.instanceName ? settings.instanceName.replace("_", ".") : ""
-    }
+    };
 
     $: {
         settings.instanceName = simpleSetup.domain.replace(".", "_");
@@ -26,7 +26,7 @@
     }
 
     const shareEventHandler = (e) => {
-        navigate("settings/share");
+        navigate("/settings/share");
     }
     </script>
 

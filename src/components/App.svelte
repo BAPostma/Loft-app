@@ -1,5 +1,5 @@
 <script>
-    import { Router, Link, Route, navigate } from "svelte-routing";
+    import { Router, Route, navigate } from "svelte-routing";
     import Dashboard from "./Dashboard.svelte";
     import Navigation from "./Navigation.svelte";
     import Settings from "./Settings.svelte";
@@ -9,14 +9,14 @@
     import MessageDetails from "./message/MessageDetails.svelte";
     import Mailboxes from "./Mailboxes.svelte";
 
-    let signedIn = false;
+    export let signedIn = false;
     const onSignin = (e) => {
         signedIn = true;
         navigate("/");
     }
     const onSignOut = (e) => {
         signedIn = false;
-        navigate("login");
+        navigate("/login");
     }
 </script>
 

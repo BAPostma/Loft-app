@@ -29,18 +29,18 @@
 </script>
 
 <div class="filter">
-    <form class="pure-form pure-form-stacked" on:submit|preventDefault={() => { /* just prevent submit */}}>
+    <form class="pure-form pure-form-stacked" on:submit={(e) => e.preventDefault()}>
         <input type="text" class="pure-input-1" placeholder="filter mailboxes" bind:value={filter} />
         <span class="counter">{displayedMailboxes.length} items</span>
     </form>
 </div>
 
 <div class="properties">
-    {#each displayedMailboxes as mailbox, idx}
-        <div class="property" tabindex={idx} on:click={() => copyMailboxEventHandler(mailbox)}>
-            <strong>Mailbox</strong>
-            <div>{mailbox}</div>
-        </div>
+    {#each displayedMailboxes as mailbox}
+        <button type="button" class="property mailbox-item" on:click={() => copyMailboxEventHandler(mailbox)}>
+            <strong class="label">Mailbox</strong>
+            <span class="value">{mailbox}</span>
+        </button>
     {/each}
 </div>
 

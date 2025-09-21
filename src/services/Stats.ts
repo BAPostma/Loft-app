@@ -1,11 +1,11 @@
 import { TableDescription } from "@aws-sdk/client-dynamodb";
-import Database from "../clients/Database";
+import { Database } from "../clients/Database";
 import { LoftQueueType, Queueing } from "../clients/Queueing";
 
 export class Stats {
     private database: Database;
     private queueing: Queueing;
-    private tableInfoCache: TableDescription;
+    private tableInfoCache: TableDescription | null = null;
 
     public constructor(database: Database, queueing: Queueing) {
         this.database = database;
@@ -17,7 +17,7 @@ export class Stats {
             this.tableInfoCache = await this.database.tableInformation();
         }
 
-        return this.tableInfoCache.ItemCount;
+        return this.tableInfoCache?.ItemCount;
     }
 
     public async queueDepths() {
